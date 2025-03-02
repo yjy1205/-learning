@@ -1,1 +1,38 @@
+DFS 深度优先搜索   栈
 
+一种遍历算法，两个关键特征：1.一直往深处走 2.走不通就回溯
+
+从简单的二叉树开始：
+
+
+
+
+BFS 广度优先搜索   队列
+
+
+
+
+#BFS扩展：最短路径（图论算法）
+def BFS(graph,start):
+    queue=[]
+    queue.append(start)
+    seen=set()
+    seen.add(start)
+    parent={start:None}
+
+    while(len(queue)>0):
+        index=queue.pop(0)
+        nodes=graph[index]
+        for w in nodes:
+            if w not in seen:
+                queue.append(w)
+                seen.add(w)
+                parent[w]=index
+        #print(index)
+    return parent
+
+parent=BFS(graph,"E")
+i='B'
+while i!=None:
+    print(i)
+    i=parent[i]
